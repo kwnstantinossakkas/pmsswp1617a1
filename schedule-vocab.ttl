@@ -1,4 +1,40 @@
 # Το αρχείο Turtle του λεξιλογίου RDFS που περιγράφει
 # τις κλάσεις και τις ιδιότητες του ωρολογίου προγράμματος.
 
+# Βήμα 2.1: Δηλώσεις ονομάτων
+@prefix voc: <http://dilab77.ionio.gr/swp/sakkas/vocab#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
+# Βήμα 2.2: Δηλώσεις κλάσεων
+voc:Διδάσκων rdf:type rdfs:Class ;
+             rdfs:subClassOf foaf:Person .
+voc:Διάλεξη  rdf:type rdfs:Class .
+voc:Αίθουσα  rdf:type rdfs:Class .
+voc:Μάθημα   rdf:type rdfs:Class .
+
+# Βήμα 2.3: Δηλώσεις ιδιοτήτων, domain, range
+voc:Ημέρα       rdf:type 	rdf:Property .
+voc:Έναρξη		rdf:type 	rdf:Property . 
+voc:Λήξη        rdf:type 	rdf:Property .
+voc:Εξάμηνο     rdf:type 	rdf:Property .
+voc:Όνομα		rdf:type 	rdf:Property .
+
+voc:Ημέρα       rdfs:domain  voc:Διάλεξη   ;
+       	     	rdfs:range   xsd:gDay      .
+
+voc:Έναρξη      rdfs:domain  voc:Διάλεξη   ;
+       	     	rdfs:range   xsd:time      .
+
+voc:Λήξη        rdfs:domain  voc:Διάλεξη;
+       	     	rdfs:range   xsd:time      .  
+
+voc:Εξάμηνο     rdfs:domain  voc:Διάλεξη   ;
+       	     	rdfs:range   xsd:string    .
+
+voc:Όνομα	    rdfs:range   voc:Διδάσκων  ;
+           		rdfs:range   voc:Αίθουσα   ;
+           		rdfs:range   voc:Μάθημα    ;
+           		rdfs:domain  xsd:string    .             
